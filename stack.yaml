@@ -1,0 +1,7 @@
+resolver: lts-10.7
+packages:
+- .
+allow-newer: true
+extra-deps:
+- c2hs-0.28.3
+- fltkhs-0.5.4.5

@@ -1,0 +1,59 @@
+name:                load-font
+version:             0.1.0.1
+github:              "deech/load-font"
+license:             BSD3
+author:              "Aditya Siram"
+maintainer:          "aditya.siram@gmail.com"
+copyright:           "2018 Aditya Siram"
+synopsis:            A cross platform library for loading bundled fonts into your application
+category:            UI,Graphics,GUI,User Interfaces, Font
+extra-source-files:
+- src/cbits/font_load.c
+- README.org
+- ChangeLog.md
+data-files:
+- test-fonts/*.ttf
+
+description:         Please see the README on Github at <https://github.com/deech/font-load#readme>
+
+dependencies:
+- base >= 4.7 && < 5
+
+library:
+  source-dirs: src
+  exposed-modules: Graphics.UI.Font.Load
+  build-tools: c2hs
+  c-sources:
+    - src/cbits/font_load.c
+  include-dirs: src/cbits
+
+flags:
+  demo:
+    description: Build the demo
+    manual: True
+    default: False
+
+executables:
+  load-font-exe:
+    main:                Main.hs
+    source-dirs:         app
+    ghc-options:
+    - -threaded
+    - -rtsopts
+    - -with-rtsopts=-N
+    dependencies:
+    - load-font
+    - fltkhs >= 0.5.4.5
+    - text >= 1.2.2.0
+    ghc-options: -O2
+    when:
+      - condition: flag(demo)
+        then:
+          buildable: True
+        else:
+          buildable: False
+      - condition: (os(linux) || os(windows))
+        then:
+          ghc-options: -pgml g++ "-optl-Wl,--allow-multiple-definition" "-optl-Wl,--whole-archive" "-optl-Wl,-Bstatic" "-optl-Wl,-lfltkc" "-optl-Wl,-Bdynamic" "-optl-Wl,--no-whole-archive"
+        else:
+          ghc-options: "-optl-Wl,-lfltkc"

@@ -1,0 +1,20 @@
+* Load Font
+  This library aims to a cross-platform (Win/Lin/OSX) GUI agnostic way to load a custom font bundled with your Haskell app and is [[https://hackage.haskell.org/package/load-font/docs/Graphics-UI-Font-Load.html][extensively]] documented on Hackage.
+
+* Load Font Demo
+
+  Included is a demo that shows off the library, but it is optional and does not build unless you set the ~demo~ flag as in the build instructions below.
+
+  It builds an executable ~load-font-exe~ which uses the [[https://hackage.haskell.org/package/fltkhs][FLTKHS]] GUI framework and bundles the [[https://www.dafont.com/moon-phases.font][Moon Phases]] font. It has been tested on Arch Linux, Windows 10 and OSX Sierra.
+
+  The demo uses FLTKHS font loading and unloading but it is agnostic to the GUI framework. FLTKHS is used here simply because it's the easiest to build and install.
+
+  This library owes its existence to [[https://groups.google.com/d/msg/fltkgeneral/uAdg8wOLiMk/_CzBu995AwAJ][Albrecht Schlosser's post on the FLTK mailing list]].
+
+  To run the demo, clone this repo and do:
+  #+BEGIN_EXAMPLE
+  > stack build --flag load-font:demo --flag fltkhs:bundled
+  > stack exec load-font-exe
+  #+END_EXAMPLE
+
+ [[file:screenshot-demo.jpg]]
