@@ -14,7 +14,7 @@ extra-source-files:
 data-files:
 - test-fonts/*.ttf
 
-description:         Please see the README on Github at <https://github.com/deech/font-load#readme>
+description:         Please see the README on Github at <https://github.com/deech/load-font#readme>
 
 dependencies:
 - base >= 4.7 && < 5
