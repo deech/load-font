@@ -1,5 +1,5 @@
 name:                load-font
-version:             0.1.0.1
+version:             0.1.0.2
 github:              "deech/load-font"
 license:             BSD3
 author:              "Aditya Siram"
@@ -8,11 +8,17 @@ copyright:           "2018 Aditya Siram"
 synopsis:            A cross platform library for loading bundled fonts into your application
 category:            UI,Graphics,GUI,User Interfaces, Font
 extra-source-files:
+- src/cbits/font_load.h
 - src/cbits/font_load.c
 - README.org
 - ChangeLog.md
 data-files:
 - test-fonts/*.ttf
+
+custom-setup:
+  dependencies:
+  - base >= 4.4
+  - Cabal >= 1.24.1 && < 3
 
 description:         Please see the README on Github at <https://github.com/deech/load-font#readme>
 
@@ -24,8 +30,8 @@ library:
   exposed-modules: Graphics.UI.Font.Load
   build-tools: c2hs
   c-sources:
-    - src/cbits/font_load.c
-  include-dirs: src/cbits
+    - ./src/cbits/font_load.c
+  include-dirs: ./src/cbits
 
 flags:
   demo:
