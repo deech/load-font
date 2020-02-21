@@ -1,5 +1,5 @@
 name:                load-font
-version:             0.1.0.2
+version:             0.1.0.3
 github:              "deech/load-font"
 license:             BSD3
 author:              "Aditya Siram"
@@ -18,7 +18,7 @@ data-files:
 custom-setup:
   dependencies:
   - base >= 4.4
-  - Cabal >= 1.24.1 && < 3
+  - Cabal >= 2.4.0.0 && < 4
 
 description:         Please see the README on Github at <https://github.com/deech/load-font#readme>
 
@@ -47,11 +47,11 @@ executables:
     - -threaded
     - -rtsopts
     - -with-rtsopts=-N
+    - -O2
     dependencies:
     - load-font
-    - fltkhs >= 0.5.4.5
+    - fltkhs >= 0.8.0.3
     - text >= 1.2.2.0
-    ghc-options: -O2
     when:
       - condition: flag(demo)
         then:
